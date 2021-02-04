@@ -35,7 +35,7 @@ if st.sidebar.button('Here we go!'):
      image = Image.open('./sample.png')
      st.image(image, use_column_width=True)
 
-dest = st.selectbox('Where do you want to go?',['Raffles Place, Marina, Cecil','Tanjong Pagar, Chinatown','Tiong Bahru, Alexandra, Queenstown'],key='dest')
+dest = st.selectbox('Where do you want to go?',['Raffles Place, Marina, Cecil','Tanjong Pagar, Chinatown','Tiong Bahru, Alexandra, Queenstown','Mount Faber, Telok Blangah, Harbourfront','Buona Vista, Pasir Panjang, Clementi','Clarke Quay, City Hall','Bugis, Beach Road, Golden Mile','Little India, Farrer Park'],key='dest')
 col1,col2 = st.beta_columns(2)
 with col1: 
      date_from = st.date_input('From when are you booking?',min_value=datetime.date.today(),key='when1')
