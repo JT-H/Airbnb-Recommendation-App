@@ -20,7 +20,6 @@ st.set_page_config(
      page_icon="A",
      layout="wide",
      initial_sidebar_state="expanded",
-     server.enableXsrfProtection=true
 )
 
 st.title("Airbnb User Recommendation Service 🏡")
