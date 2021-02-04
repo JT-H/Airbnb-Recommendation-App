@@ -32,6 +32,8 @@ st.sidebar.title("Airbnb User Recommendation Service 🏡")
 st.sidebar.subheader("If you're an old user"):
 id = st.sidebar.text_input('Key in your id',key='id',max_chars=10)
 if st.sidebar.button('Here we go!'):
+     image = Image.open('./sample.png')
+     st.image(image, use_column_width=True)
 
 dest = st.selectbox('Where do you want to go?',['Raffles Place, Marina, Cecil','Tanjong Pagar, Chinatown','Tiong Bahru, Alexandra, Queenstown'],key='dest')
 col1,col2 = st.beta_columns(2)
@@ -41,6 +43,8 @@ with col2:
      date_to = st.date_input('To when are you booking?',min_value=date_from,key='when2')
 price = st.slider('What price range do you prefer?',10, 500, value=(50,250),step=10, key='price')
 room_type = st.multiselect('What room type do you want?',('Single room','double room','triple room','quad room','queen room','king room'))
+sort = st.radio('Sort the result by:',('Ratings','Number of reviews','Number of history bookings'))
+host = st.checkbox('Superhost only',key='super')
 if st.button('Find me the rooms!!!',key='fireaway'):
      col1,col2 = st.beta_columns(2)
      with col1:
