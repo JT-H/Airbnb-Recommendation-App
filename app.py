@@ -30,8 +30,8 @@ st.markdown("Seek your perfect fit here ❤️")
 st.sidebar.title("Airbnb User Recommendation Service 🏡")
 
 dest = st.selectbox('Where do you want to go?',['Raffles Place, Marina, Cecil','Tanjong Pagar, Chinatown','Tiong Bahru, Alexandra, Queenstown'],key='dest')
-# date_from = st.date_input('From when are you booking?',min_value=datetime.date.today(),key='when1')
-# date_to = st.date_input('To when are you booking?',min_value=date_from,key='when2')
+date_from = st.date_input('From when are you booking?',min_value=datetime.date.today(),key='when1')
+date_to = st.date_input('To when are you booking?',min_value=date_from,key='when2')
 price = st.slider('What price range do you prefer?',10, 500, value=(50,250),step=10, key='price')
 room_type = st.multiselect('What room type do you want?',('Single room','double room','triple room','quad room','queen room','king room'))
 if st.button('Find me the rooms!!!',key='fireaway'):
