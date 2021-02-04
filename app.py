@@ -24,7 +24,7 @@ st.set_page_config(
      initial_sidebar_state="expanded",
 )
 
-st.title("Airbnb User Recommendation Service 🏡")
+st.title("Airbnb User Recommendation Service 🏡 (Demo)")
 st.markdown("Seek your perfect fit here ❤️")
 
 st.sidebar.title("Airbnb User Recommendation Service 🏡")
