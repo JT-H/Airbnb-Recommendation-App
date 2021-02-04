@@ -37,7 +37,7 @@ if st.button("I'm a new user", key='new'):
      if st.button('Find me the rooms!!!',key='fireaway'):
           col1,col2 = st.beta_columns(2)
           with col1:
-              Image = Image.open('./sample.jpg')
+               Image = Image.open('./sample.jpg')
                st.image(image, use_column_width=True)
           with col2:
                df = pd.DataFrame(np.random.randn(1000, 2) / [50, 50] + [1.35, 103.82],columns=['lat', 'lon'])
