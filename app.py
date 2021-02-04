@@ -29,7 +29,7 @@ st.markdown("Seek your perfect fit here ❤️")
 st.sidebar.title("Airbnb User Recommendation Service 🏡")
 
 if st.button("I'm a new user", key='new'):
-     dest = st.selectbox('Where do you want to go?',[country for country in countries],key='dest')
+     dest = st.selectbox('Where do you want to go?',['Raffles Place, Marina, Cecil','Tanjong Pagar, Chinatown','Tiong Bahru, Alexandra, Queenstown'],key='dest')
      df = pd.DataFrame(np.random.randn(1000, 2) / [50, 50] + [37.76, -122.4],columns=['lat', 'lon'])
      st.map(df)
      date_from = st.datatime('From when are you booking?',min_value=datetime.date.today(),key='when1')
