@@ -29,7 +29,7 @@ st.markdown("Seek your perfect fit here ❤️")
 
 st.sidebar.title("Airbnb User Recommendation Service 🏡")
 
-st.sidebar.subheader("If you're an old user"):
+st.sidebar.subheader("Registered on Airbnb already?")
 id = st.sidebar.text_input('Key in your id',key='id',max_chars=10)
 if st.sidebar.button('Here we go!'):
      image = Image.open('./sample.png')
