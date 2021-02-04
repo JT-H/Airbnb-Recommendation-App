@@ -29,9 +29,16 @@ st.markdown("Seek your perfect fit here ❤️")
 
 st.sidebar.title("Airbnb User Recommendation Service 🏡")
 
+st.sidebar.subheader("If you're an old user"):
+id = st.sidebar.text_input('Key in your id',key='id',max_chars=10)
+if st.sidebar.button('Here we go!'):
+
 dest = st.selectbox('Where do you want to go?',['Raffles Place, Marina, Cecil','Tanjong Pagar, Chinatown','Tiong Bahru, Alexandra, Queenstown'],key='dest')
-date_from = st.date_input('From when are you booking?',min_value=datetime.date.today(),key='when1')
-date_to = st.date_input('To when are you booking?',min_value=date_from,key='when2')
+col1,col2 = st.beta_columns(2)
+with col1: 
+     date_from = st.date_input('From when are you booking?',min_value=datetime.date.today(),key='when1')
+with col2:
+     date_to = st.date_input('To when are you booking?',min_value=date_from,key='when2')
 price = st.slider('What price range do you prefer?',10, 500, value=(50,250),step=10, key='price')
 room_type = st.multiselect('What room type do you want?',('Single room','double room','triple room','quad room','queen room','king room'))
 if st.button('Find me the rooms!!!',key='fireaway'):
@@ -43,7 +50,6 @@ if st.button('Find me the rooms!!!',key='fireaway'):
           df = pd.DataFrame(np.random.randn(1000, 2) / [50, 50] + [1.35, 103.82],columns=['lat', 'lon'])
           st.map(df)
 
-     
 
 
 
