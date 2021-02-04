@@ -7,4 +7,4 @@ scikit_learn==0.24.1
 streamlit==0.75.0
 wordcloud==1.8.1
 datetime
-PTL
+PIL
