@@ -55,8 +55,7 @@ if st.button('Find me the rooms!!!',key='fireaway'):
           st.map(df)
 
 
-with st.beta_expander("See explanation",expanded=True):
-     st.markdown('Not yet finished with all features...')
+with st.sidebar.beta_expander("See explanation"):
      st.markdown('The listing is only for reference. And the filtering criteria are not taken into account for now.') 
                  
 
