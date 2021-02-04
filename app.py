@@ -55,7 +55,7 @@ if st.button('Find me the rooms!!!',key='fireaway'):
           st.map(df)
 
 
-
+st.sidebar.subheader('Not yet finished with all features...')
 
 
 
