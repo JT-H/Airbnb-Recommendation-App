@@ -2,12 +2,12 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import datetime
-# import plotly.express as px
+import plotly.express as px
 from PIL import Image
-#from plotly.subplots import make_subplots
-#from plotly.offline import init_notebook_mode, iplot
-#import plotly.graph_objects as go
-#import plotly.graph_objs as go
+from plotly.subplots import make_subplots
+from plotly.offline import init_notebook_mode, iplot
+import plotly.graph_objects as go
+import plotly.graph_objs as go
 from wordcloud import WordCloud, STOPWORDS
 import matplotlib.pyplot as plt
 from sklearn.feature_extraction.text import TfidfVectorizer
