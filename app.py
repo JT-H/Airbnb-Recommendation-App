@@ -9,7 +9,7 @@ from PIL import Image
 #import plotly.graph_objects as go
 #import plotly.graph_objs as go
 #from wordcloud import WordCloud, STOPWORDS
-import matplotlib.pyplot as plt
+#import matplotlib.pyplot as plt
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.cluster import KMeans
 from iso3166 import countries
