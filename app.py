@@ -56,19 +56,20 @@ if st.sidebar.button('Here we go!'):
           list_of_feat = listings_fil.columns.to_list()
           listings_fil = listings_fil[list_of_feat[:-120] + list_of_feat[-10:] + list_of_feat[-120:]]
 
-          predictions = predict_fn(listings_fil.astype({'listing_id':'string','number_of_reviews_ltm':'float64','calculated_host_listings_count':'float64'}))['preference']
+          st.dataframe(listings_fil)
+#           predictions = predict_fn(listings_fil.astype({'listing_id':'string','number_of_reviews_ltm':'float64','calculated_host_listings_count':'float64'}))['preference']
           
-          cleaned_pred = [x[0][0] for x in predictions['preference']]
-          result_df = pd.DataFrame(cleaned_pred,columns=['prediction'])
-          result_df = result_df.join(listings_fil[['listing_id','price','latitude','longitude']].reset_index())
+#           cleaned_pred = [x[0][0] for x in predictions['preference']]
+#           result_df = pd.DataFrame(cleaned_pred,columns=['prediction'])
+#           result_df = result_df.join(listings_fil[['listing_id','price','latitude','longitude']].reset_index())
           
-          col1,col2 = st.beta_columns(2)
-          sorted_id = predictions.sort_values(['prediction'],ascending=False)[['listing_id','price','latitude','longitude']].reset_index(drop=True)
-          with col1:
-               st.dataframe(sorted_id)
-          with col2:
-               lat_lon = sorted_id[['latitude','longitude']]
-               st.map(df)
+#           col1,col2 = st.beta_columns(2)
+#           sorted_id = predictions.sort_values(['prediction'],ascending=False)[['listing_id','price','latitude','longitude']].reset_index(drop=True)
+#           with col1:
+#                st.dataframe(sorted_id)
+#           with col2:
+#                lat_lon = sorted_id[['latitude','longitude']]
+#                st.map(df)
 
           
           
