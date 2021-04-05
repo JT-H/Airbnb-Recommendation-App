@@ -29,29 +29,49 @@ st.markdown("Seek your perfect fit here ❤️")
 
 st.sidebar.title("Airbnb User Recommendation Service 🏡")
 
-# # Read in necessary data
-# listings = pd.read_csv('all_listing.csv').iloc[:,1:]
-# customers = pd.read_csv('customer_record.csv').iloc[:,1:]
+# Read in necessary data
+listings = pd.read_csv('all_listing.csv').iloc[:,1:]
+customers = pd.read_csv('customer_record.csv').iloc[:,1:]
 
-# # Recommendation for past customers.
-# st.sidebar.subheader("Registered on Airbnb already?")
-# customer_id = st.sidebar.text_input('Key in your id',key='id',max_chars=10)
-# if st.sidebar.button('Here we go!'):
-#      if customer_id not in customers.reviewer_id:
+# Recommendation for past customers.
+st.sidebar.subheader("Registered on Airbnb already?")
+customer_id = st.sidebar.text_input('Key in your id',key='id',max_chars=10)
+if st.sidebar.button('Here we go!'):
+     if customer_id not in customers.reviewer_id:
+          st.text('User profile not found. Please key in your preferred options righthandside')
+          pass
+     else:
+          from tf.contrib import predictor
+
+          export_dir = 'saved_model/'
+          predict_fn = predictor.from_saved_model(export_dir)
+
+          customer = customers.query('reviewer_id == @customer_id')
+          book_history = literal_eval(customer.listing_id)
+          listings_fil = listings[[id not in book_history for id in listings.id]]
+
+          for i in customer.columns[2:]:
+               listings_fil.loc[:,i] = customer[i][0]
+           
+          list_of_feat = listings_fil.columns.to_list()
+          listings_fil = listings_fil[list_of_feat[:-120] + list_of_feat[-10:] + list_of_feat[-120:]]
+
+          predictions = predict_fn(listings_fil.astype({'listing_id':'string','number_of_reviews_ltm':'float64','calculated_host_listings_count':'float64'}))['preference']
           
-#      from tensorflow.contrib import predictor
-     
-#      export_dir = 'saved_model/'
-#      predict_fn = predictor.from_saved_model(export_dir)
-     
-#      customer = customers.query('reviewer_id == @customer_id')
-#      book_history = literal_eval(customer.listing_id)
-#      listings_fil = listings[[id not in book_history for id in listings.id]]
-     
-#      out_df = 
-     
-#      predictions = predict_fn(Xtest.astype({'listing_id':'string','number_of_reviews_ltm':'float64','calculated_host_listings_count':'float64'}))
-     
+          cleaned_pred = [x[0][0] for x in predictions['preference']]
+          result_df = pd.DataFrame(cleaned_pred,columns=['prediction'])
+          result_df = result_df.join(listings_fil[['listing_id','price','latitude','longitude']].reset_index())
+          
+          col1,col2 = st.beta_columns(2)
+          sorted_id = predictions.sort_values(['prediction'],ascending=False)[['listing_id','price','latitude','longitude']].reset_index(drop=True)
+          with col1:
+               st.dataframe(sorted_id)
+          with col2:
+               lat_lon = sorted_id[['latitude','longitude']]
+               st.map(df)
+
+          
+          
      
      
 dest = st.selectbox('Where do you want to go?',['Raffles Place, Marina, Cecil','Tanjong Pagar, Chinatown','Tiong Bahru, Alexandra, Queenstown','Mount Faber, Telok Blangah, Harbourfront','Buona Vista, Pasir Panjang, Clementi','Clarke Quay, City Hall','Bugis, Beach Road, Golden Mile','Little India, Farrer Park'],key='dest')
