@@ -68,7 +68,7 @@ if st.sidebar.button('Here we go!'):
                st.dataframe(sorted_id)
           with col2:
                lat_lon = sorted_id[['latitude','longitude']]
-               st.map(df)
+               st.map(lat_lon)
 
           
           
