@@ -63,7 +63,7 @@ if st.sidebar.button('Here we go!'):
           result_df = result_df.join(listings_fil[['listing_id','price','latitude','longitude']].reset_index())
           
           col1,col2 = st.beta_columns(2)
-          sorted_id = result_df.sort_values(['prediction'],ascending=False)[['listing_id','price','latitude','longitude']].reset_index(drop=True)
+          sorted_id = result_df.sort_values(['prediction'],ascending=False)[['listing_id','price','latitude','longitude']].reset_index(drop=True)[:20]
           with col1:
                st.dataframe(sorted_id)
           with col2:
