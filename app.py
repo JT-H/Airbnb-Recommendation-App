@@ -58,7 +58,7 @@ if st.sidebar.button('Here we go!'):
 
           predictions = predict_fn(listings_fil.astype({'listing_id':'string','number_of_reviews_ltm':'float64','calculated_host_listings_count':'float64'}))['preference']
           
-          cleaned_pred = [x[0][0] for x in predictions['preference']]
+          cleaned_pred = [x[0][0] for x in predictions]
           result_df = pd.DataFrame(cleaned_pred,columns=['prediction'])
           result_df = result_df.join(listings_fil[['listing_id','price','latitude','longitude']].reset_index())
           
