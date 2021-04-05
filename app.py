@@ -48,7 +48,7 @@ if st.sidebar.button('Here we go!'):
 
           customer = customers.query('reviewer_id == @customer_id')
           book_history = customer.listing_id.apply(literal_eval).agg(set).values[0]
-          listings_fil = listings[[id not in book_history for id in listings.id]]
+          listings_fil = listings[[id not in book_history for id in listings.listing_id]]
 
           for i in customer.columns[2:]:
                listings_fil.loc[:,i] = customer[i].values[0]
