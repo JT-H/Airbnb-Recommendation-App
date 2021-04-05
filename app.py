@@ -47,11 +47,11 @@ if st.sidebar.button('Here we go!'):
           predict_fn = predictor.from_saved_model(export_dir)
 
           customer = customers.query('reviewer_id == @customer_id')
-          book_history = literal_eval(customer.listing_id)
+          book_history = customer.listing_id.apply(ast.literal_eval).agg(set).values[0]
           listings_fil = listings[[id not in book_history for id in listings.id]]
 
           for i in customer.columns[2:]:
-               listings_fil.loc[:,i] = customer[i][0]
+               listings_fil.loc[:,i] = customer[i].values[0]
            
           list_of_feat = listings_fil.columns.to_list()
           listings_fil = listings_fil[list_of_feat[:-120] + list_of_feat[-10:] + list_of_feat[-120:]]
