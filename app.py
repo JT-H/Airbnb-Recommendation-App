@@ -30,8 +30,8 @@ st.markdown("Seek your perfect fit here ❤️")
 st.sidebar.title("Airbnb User Recommendation Service 🏡")
 
 # Read in necessary data
-listings = pd.read_csv('all_listing.csv').iloc[:,1:]
-customers = pd.read_csv('customer_record.csv').iloc[:,1:]
+listings = pd.read_csv('datasets/all_listing.csv')
+customers = pd.read_csv('datasets/customer_record.csv')
 
 # Recommendation for past customers.
 st.sidebar.subheader("Registered on Airbnb already?")
