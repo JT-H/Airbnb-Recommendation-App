@@ -66,6 +66,7 @@ if st.sidebar.button('Here we go!'):
           sorted_id = result_df.sort_values(['prediction'],ascending=False)[['listing_id','prediction','price','latitude','longitude']].reset_index(drop=True)[:20]
           
           with col1:
+               st.subheader('Hi! This is your personal recommendation!'
                st.dataframe(sorted_id.style.highlight_min(subset=['price'],axis=0,color='blue'))
           with col2:
                lat_lon = sorted_id[['latitude','longitude']]
