@@ -37,7 +37,7 @@ customers = pd.read_csv('datasets/customer_record.csv')
 st.sidebar.subheader("Registered on Airbnb already?")
 customer_id = st.sidebar.text_input('Key in your id',key='id',max_chars=10)
 if st.sidebar.button('Here we go!'):
-     if customer_id not in customers.reviewer_id:
+     if str(customer_id) not in customers.reviewer_id:
           st.text('User profile not found. Please key in your preferred options righthandside')
           pass
      else:
