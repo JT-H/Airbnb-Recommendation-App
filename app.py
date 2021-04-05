@@ -1,4 +1,5 @@
 import streamlit as st
+import tensorflow as tf
 import pandas as pd
 import numpy as np
 import datetime
@@ -8,13 +9,11 @@ from plotly.subplots import make_subplots
 from plotly.offline import init_notebook_mode, iplot
 import plotly.graph_objects as go
 import plotly.graph_objs as go
-from wordcloud import WordCloud, STOPWORDS
 import matplotlib.pyplot as plt
-from sklearn.feature_extraction.text import TfidfVectorizer
-from sklearn.cluster import KMeans
-from iso3166 import countries
-from io import StringIO
+from ast import literal_eval
 
+
+# Settings
 st.set_option('deprecation.showPyplotGlobalUse', False)
 
 st.set_page_config(
@@ -24,17 +23,37 @@ st.set_page_config(
      initial_sidebar_state="expanded",
 )
 
+# Title and introductions
 st.title("Airbnb User Recommendation Service 🏡 (Demo)")
 st.markdown("Seek your perfect fit here ❤️")
 
 st.sidebar.title("Airbnb User Recommendation Service 🏡")
 
-st.sidebar.subheader("Registered on Airbnb already?")
-id = st.sidebar.text_input('Key in your id',key='id',max_chars=10)
-if st.sidebar.button('Here we go!'):
-     image = Image.open('./sample.png')
-     st.image(image, use_column_width=True)
+# # Read in necessary data
+# listings = pd.read_csv('all_listing.csv').iloc[:,1:]
+# customers = pd.read_csv('customer_record.csv').iloc[:,1:]
 
+# # Recommendation for past customers.
+# st.sidebar.subheader("Registered on Airbnb already?")
+# customer_id = st.sidebar.text_input('Key in your id',key='id',max_chars=10)
+# if st.sidebar.button('Here we go!'):
+#      if customer_id not in customers.reviewer_id:
+          
+#      from tensorflow.contrib import predictor
+     
+#      export_dir = 'saved_model/'
+#      predict_fn = predictor.from_saved_model(export_dir)
+     
+#      customer = customers.query('reviewer_id == @customer_id')
+#      book_history = literal_eval(customer.listing_id)
+#      listings_fil = listings[[id not in book_history for id in listings.id]]
+     
+#      out_df = 
+     
+#      predictions = predict_fn(Xtest.astype({'listing_id':'string','number_of_reviews_ltm':'float64','calculated_host_listings_count':'float64'}))
+     
+     
+     
 dest = st.selectbox('Where do you want to go?',['Raffles Place, Marina, Cecil','Tanjong Pagar, Chinatown','Tiong Bahru, Alexandra, Queenstown','Mount Faber, Telok Blangah, Harbourfront','Buona Vista, Pasir Panjang, Clementi','Clarke Quay, City Hall','Bugis, Beach Road, Golden Mile','Little India, Farrer Park'],key='dest')
 col1,col2 = st.beta_columns(2)
 with col1: 
