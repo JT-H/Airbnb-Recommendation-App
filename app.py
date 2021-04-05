@@ -33,6 +33,11 @@ st.sidebar.title("Airbnb User Recommendation Service 🏡")
 listings = pd.read_csv('datasets/all_listing.csv')
 customers = pd.read_csv('datasets/customer_record.csv')
 
+# Aux func
+# def showhighest(styler):
+#      return (styler.highl(**{'text-align': 'right'})
+#                   .format({'conversion': '{:.1%}'}))
+
 # Recommendation for past customers.
 st.sidebar.subheader("Registered on Airbnb already?")
 customer_id = st.sidebar.text_input('Key in your id',key='id',max_chars=10)
@@ -66,8 +71,8 @@ if st.sidebar.button('Here we go!'):
           sorted_id = result_df.sort_values(['prediction'],ascending=False)[['listing_id','prediction','price','latitude','longitude']].reset_index(drop=True)[:20]
           
           with col1:
-               st.subheader('Hi! This is your personal recommendation!'
-               st.dataframe(sorted_id.style.highlight_min(subset=['price'],axis=0,color='blue'))
+               st.subheader('Hi! This is your personal recommendation!')
+               st.dataframe(sorted_id.style.highlight_min(subset=['price'],axis=0,color='blue').set_precision(3).format({'price': "${:0<3.0f}", 'D': '{:+.2f}'}))
           with col2:
                lat_lon = sorted_id[['latitude','longitude']]
                st.map(lat_lon)
