@@ -1,5 +1,5 @@
 import streamlit as st
-import tensorflow as tf
+import tensorflow
 import pandas as pd
 import numpy as np
 import datetime
@@ -41,7 +41,7 @@ if st.sidebar.button('Here we go!'):
           st.sidebar.text('User profile not found. Please key in your preferred options righthandside')
           pass
      else:
-          from tf.contrib import predictor
+          from tensorflow.contrib import predictor
 
           export_dir = 'saved_model/'
           predict_fn = predictor.from_saved_model(export_dir)
