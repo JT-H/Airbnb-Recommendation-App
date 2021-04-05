@@ -69,6 +69,10 @@ if st.sidebar.button('Here we go!'):
           with col2:
                lat_lon = sorted_id[['latitude','longitude']]
                st.map(lat_lon)
+               
+          pref = st.checkbox('Show the preference value',key='pref')
+          if pref:
+               st.dataframe(sorted_id.prediction.T)
 
           
           
