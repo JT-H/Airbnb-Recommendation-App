@@ -66,11 +66,7 @@ if st.sidebar.button('Here we go!'):
           sorted_id = result_df.sort_values(['prediction'],ascending=False)[['listing_id','prediction','price','latitude','longitude']].reset_index(drop=True)[:20]
           
           with col1:
-               pref = st.checkbox('Show the preference value',key='pref')
-               if pref:
-                    st.dataframe(sorted_id,axis=1)
-               else:
-                    st.dataframe(sorted_id.drop(['prediction'],axis=1))
+               st.dataframe(sorted_id,axis=1)
           with col2:
                lat_lon = sorted_id[['latitude','longitude']]
                st.map(lat_lon)
