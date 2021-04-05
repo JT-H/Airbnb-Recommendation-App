@@ -68,7 +68,7 @@ if st.sidebar.button('Here we go!'):
           with col1:
                pref = st.checkbox('Show the preference value',key='pref')
                if pref:
-                    st.dataframe(sorted_id,axis=1))
+                    st.dataframe(sorted_id,axis=1)
                else:
                     st.dataframe(sorted_id.drop(['prediction'],axis=1))
           with col2:
