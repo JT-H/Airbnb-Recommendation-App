@@ -47,7 +47,7 @@ if st.sidebar.button('Here we go!'):
           predict_fn = predictor.from_saved_model(export_dir)
 
           customer = customers.query('reviewer_id == @customer_id')
-          book_history = customer.listing_id.apply(ast.literal_eval).agg(set).values[0]
+          book_history = customer.listing_id.apply(literal_eval).agg(set).values[0]
           listings_fil = listings[[id not in book_history for id in listings.id]]
 
           for i in customer.columns[2:]:
