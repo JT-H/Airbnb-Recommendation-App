@@ -72,10 +72,7 @@ if st.sidebar.button('Here we go!'):
           
           with col1:
                st.markdown('Hi long time no see! This is your personal recommendation!')
-               st.dataframe(sorted_id.style.highlight_min(subset=['price'],
-                                                          axis=0,
-                                                          color='blue').set_precision(3).format({'price': "${:0<3.0f}", 
-                                                                                                 'D': '{:+.2f}'}).set_table_styles([{'selector': 'tr:hover',
+               st.dataframe(sorted_id.format({'price': "${:0<3.0f}", 'latitude': '{:+.1f}', 'longitude': '{:+.1f}'}).style.highlight_min(subset=['price'], axis=0, color='blue').set_precision(3).set_table_styles([{'selector': 'tr:hover',
                                                                                                                                       'props': [('background-color', '#ff0000')]}]))
           with col2:
                lat_lon = sorted_id[['latitude','longitude']]
