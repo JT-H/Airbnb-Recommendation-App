@@ -75,8 +75,8 @@ if st.sidebar.button('Here we go!'):
                st.dataframe(sorted_id.style.highlight_min(subset=['price'],
                                                           axis=0,
                                                           color='blue').set_precision(3).format({'price': "${:0<3.0f}", 
-                                                                                                 'D': '{:+.2f}'})).set_table_styles([{'selector': 'tr:hover',
-                                                                                                                                      'props': [('background-color', '#ff0000')]}])
+                                                                                                 'D': '{:+.2f}'}).set_table_styles([{'selector': 'tr:hover',
+                                                                                                                                      'props': [('background-color', '#ff0000')]}]))
           with col2:
                lat_lon = sorted_id[['latitude','longitude']]
                st.map(lat_lon)
