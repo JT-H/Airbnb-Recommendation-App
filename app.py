@@ -39,6 +39,7 @@ customers = pd.read_csv('datasets/customer_record.csv')
 #                   .format({'conversion': '{:.1%}'}))
 
 # Recommendation for past customers.
+@st.cache(allow_output_mutation=True, max_entries=10, ttl=3600)
 st.sidebar.subheader("Registered on Airbnb already?")
 customer_id = st.sidebar.text_input('Key in your id',key='id',max_chars=10)
 if st.sidebar.button('Here we go!'):
